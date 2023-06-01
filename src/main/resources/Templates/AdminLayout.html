@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<th:block th:fragment="header">
+  <header>
+    <h1>Moby Dickens Bookstore</h1>
+    <h3>Back-End Administration Service</h3>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/books/view">Book View</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/books/add">Add Book</a>
+            </li>
+          </ul>
+          <div style="float: right;">
+            <div th:if="${#httpServletRequest.remoteUser}">
+              <p th:text="${#httpServletRequest.remoteUser}">
+                Admin
+              </p>
+              <a href="/logout">(Logout)</a>
+            </div>
+            <a th:unless="${#httpServletRequest.remoteUser}" href="/login">Login</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  </header>
+</th:block>
+
+<th:block th:fragment="footer">
+  <footer>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <ul class="nav flex-column me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact-us">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">&copy; 2022 - Moby Dickens Bookstore</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </footer>
+</th:block>
+
+</body>
+</html>

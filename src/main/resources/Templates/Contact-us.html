@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moby Dickens</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<div th:include="layout::header"></div>
+
+<section id="content">
+    <!-- contact us email form -->
+    <h4>If you have any questions or concerns, email us at admin@mobydickens.com with the form below:</h4>
+    <div class="alert alert-success" role="alert" th:if="${success}" th:text="${success}">
+        A simple success alert—check it out!
+    </div>
+    <form action="/email" method="post">
+        <div class="mb-3">
+            <label for="exampleFormControlInput0" class="form-label">Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput0" placeholder="John Doe">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput2" class="form-label">Subject</label>
+            <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="subject">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Email Body</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark">Send Email</button>
+    </form>
+</section>
+
+<div th:include="layout::footer"></div>
+
+</body>
+</html>
